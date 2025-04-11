@@ -24,7 +24,7 @@ const [editForm, setEditForm] = useState({
   const fetchJobs = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:4000/api/jobs/getAll${filter ? `?status=${filter}` : ""}`
+        `https://job-tracker-backend-a0kd.onrender.com/api/jobs/getAll${filter ? `?status=${filter}` : ""}`
       );
       setJobs(res.data);
     } catch (error) {
@@ -39,7 +39,7 @@ const [editForm, setEditForm] = useState({
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/jobs/add", form);
+      await axios.post("https://job-tracker-backend-a0kd.onrender.com/api/jobs/add", form);
       setForm({ company: "", role: "", status: "Applied", appliedDate: "", link: "" });
       fetchJobs();
     } catch (error) {
@@ -49,7 +49,7 @@ const [editForm, setEditForm] = useState({
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/jobs/delete/${id}`);
+      await axios.delete(`https://job-tracker-backend-a0kd.onrender.com/api/jobs/delete/${id}`);
       fetchJobs();
     } catch (error) {
       console.error("Error deleting job:", error.message);
@@ -72,7 +72,7 @@ const [editForm, setEditForm] = useState({
   
   const handleUpdate = async (id) => {
     try {
-      await axios.put(`http://localhost:4000/api/jobs/update/${id}`, editForm);
+      await axios.put(`https://job-tracker-backend-a0kd.onrender.com/api/jobs/update/${id}`, editForm);
       setEditId(null);
       fetchJobs();
     } catch (error) {
